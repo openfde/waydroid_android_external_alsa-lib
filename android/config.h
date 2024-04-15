@@ -14,7 +14,12 @@
 #define ALSA_DEVICE_DIRECTORY "/dev/snd/"
 
 /* directory containing ALSA add-on modules */
+#if defined(__aarch64__)
+/* If we are on an arm64 build -- then the lib dir is lib64. */
+#define ALSA_PLUGIN_DIR "/vendor/lib64/hw/"
+#else
 #define ALSA_PLUGIN_DIR "/vendor/lib/hw/"
+#endif
 
 /* Build hwdep component */
 #define BUILD_HWDEP "1"
